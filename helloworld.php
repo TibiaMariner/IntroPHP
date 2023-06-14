@@ -1,0 +1,4 @@
+<?php
+    echo("JÁ TAMO NO TOUHOU 19 IXI DALHE MAIS AUNN ZUN")
+
+?>
