@@ -52,9 +52,9 @@
 <body>
         <form action ="login.php" method="post">
             <h1>LOGIN DE USUARIO</h1>
-            <input type="text" name= "nome" placeholder="NOME">
+            <input type="text" name= "nome" placeholder="NOME" required>
             <p></p>
-            <input type="password" name= "senha" placeholder="SENHA">
+            <input type="password" name= "senha" placeholder="SENHA" required>
             <p></p>
             <input type="submit" name= "login" value="LOGIN">
 
