@@ -11,14 +11,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 $nome = $_POST['nome'];
 $senha =$_POST['senha'];
+
+
 #QUERY DE BANCO DE DADOS 
-$sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$senha'";
+$sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$senha' AND usu_ativo = 's'";
 $retorno = mysqli_query($link, $sql);
 
 ##TODO RETORNO DO BANCO É RETORNADO EM ARRAY EM PHP
 while($tbl = mysqli_fetch_array($retorno))
 {
-$cont = $tbl[0];
+    $cont = $tbl[0];
 }
 
 ##VERIFICA SE USUARIO EXISTE
