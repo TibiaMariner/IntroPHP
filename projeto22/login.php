@@ -2,7 +2,7 @@
 ##ABRE UMA VARIAVEL DE SESSÃO
 session_start();
 
-$nomeusuario
+$nomeusuario;
 ##SOLICITA ARQUIVO CONECTA DB
 include("conectadb.php");
 
