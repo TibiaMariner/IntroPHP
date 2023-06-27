@@ -14,6 +14,12 @@ while($tbl = mysqli_fetch_array($retorno)){
     $nome = $tbl[1]; #CAMPO NOME DA TABELA DO BANCO
     $senha = $tbl[2]; #CAMPO SENHA DA TABELA DO BANCO
     $ativo = $tbl[3]; #CAMPO ATIVO DA TABELA DO BANCO
+    $datanasc = $tbl[4]; #CAMPO DATA DE NASCIMENTO DA TABELA DO BANCO
+    $CPF = $tbl[5]; #CAMPO CPF DA TABELA DO BANCO
+    $telefone = $tbl[6]; #CAMPO TELEFONE DA TABELA DO BANCO
+    $cidade = $tbl[7]; #CAMPO CIDADE DA TABELA DO BANCO
+    $logradouro = $tbl[8]; #CAMPO LOGRADOURO DA TABELA DO BANCO
+    $numero = $tbl[9]; #CAMPO NUMERO DA TABELA DO BANCO
 }
 
 #USUARIO CLICA NO BOTÃO SALVAR
@@ -22,13 +28,21 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
     $ativo = $_POST['ativo'];
+    $datanasc = $_POST['datanasc'];
+    $CPF = $_POST['cpf'];
+    $telefone = $_POST['telefone'];
+    $cidade = $_POST['cidade'];
+    $logradouro = $_POST['logradouro'];
+    $numero = $_POST['numero'];
 
-    $sql = "UPDATE usuarios SET usu_nome = '$nome', usu_senha = '$senha', usu_ativo = '$ativo'
-    WHERE usu_id = $id";
+    $sql = "UPDATE clientes SET cli_nome = '$nome', cli_senha = '$senha', cli_ativo = '$ativo',
+     cli_datanasc = '$datanasc', cli_cpf = '$CPF', cli_telefone = '$telefone',
+     cli_cidade ='$cidade', cli_logradouro = '$logradouro', cli_numero = '$numero'
+    WHERE cli_id = $id";
 
     mysqli_query($link, $sql);
 
-    echo"<script>window.alert('USUARIO ALTERADO COM SUCESSO!');</script>";
+    echo"<script>window.alert('CLIENTE ALTERADO COM SUCESSO!');</script>";
     echo"<script>window.location.href='admhome.php';</script>";
 }
 
@@ -41,7 +55,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estiloadm.css">
-    <title>ALTERA USUARIOS</title>
+    <title>ALTERA CLIENTES</title>
 </head>
 <body>
     <div>
@@ -57,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     </div>
 
     <div>
-        <form action="alterausuario.php" method="post">
+        <form action="alteracliente.php" method="post">
             <input type="hidden" name="id" value="<?=$id?>">
             <input type="text" name="nome" id="nome" value="<?=$nome?>" required>
             <br>
