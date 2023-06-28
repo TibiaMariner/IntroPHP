@@ -35,7 +35,7 @@ else
     $sql = "INSERT INTO clientes (cli_nome, cli_senha, cli_ativo, cli_datanasc, cli_cpf, cli_telefone,cli_cidade ,cli_logradouro ,cli_numero)
     VALUES('$nome','$senha','s','$datanasc','$CPF','$telefone','$cidade','$logradouro','$numero')";
     mysqli_query($link, $sql);
-    echo"<script>window.location.href='admhome.php';</script>";
+    echo"<script>window.location.href='listacliente.php';</script>";
     echo"<script>window.alert('CLIENTE CADASTRADO');</script>";   
 }
 }

@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>CPF</th>
                     <th>TELEFONE</th>
                     <th>CIDADE</th>
+                    <th>EDIÇÕES</th>
                     <th>ATIVO?</th>
                 </tr>
                 <!-- BRUXARIA EM PHP -->

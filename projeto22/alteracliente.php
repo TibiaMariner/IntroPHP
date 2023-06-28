@@ -6,20 +6,20 @@ $nomeusuario = $_SESSION["nomeusuario"];
 
 #TRAZ DADOS DO BANCO PARA COMPLETAR OS CAMPOS
 $id = $_GET['id'];
-$sql = "SELECT * FROM usuarios WHERE usu_id = '$id'";
+$sql = "SELECT * FROM clientes WHERE cli_id = '$id'";
 $retorno = mysqli_query($link, $sql);
 
 #PREENCHENDO O ARRAY SEMPRE
 while($tbl = mysqli_fetch_array($retorno)){
-    $nome = $tbl[1]; #CAMPO NOME DA TABELA DO BANCO
-    $senha = $tbl[2]; #CAMPO SENHA DA TABELA DO BANCO
-    $ativo = $tbl[3]; #CAMPO ATIVO DA TABELA DO BANCO
-    $datanasc = $tbl[4]; #CAMPO DATA DE NASCIMENTO DA TABELA DO BANCO
-    $CPF = $tbl[5]; #CAMPO CPF DA TABELA DO BANCO
-    $telefone = $tbl[6]; #CAMPO TELEFONE DA TABELA DO BANCO
-    $cidade = $tbl[7]; #CAMPO CIDADE DA TABELA DO BANCO
-    $logradouro = $tbl[8]; #CAMPO LOGRADOURO DA TABELA DO BANCO
-    $numero = $tbl[9]; #CAMPO NUMERO DA TABELA DO BANCO
+    $CPF = $tbl[1]; #CAMPO CPF DA TABELA DO BANCO
+    $nome = $tbl[2]; #CAMPO NOME DA TABELA DO BANCO
+    $senha = $tbl[3]; #CAMPO SENHA DA TABELA DO BANCO    
+    $datanasc = $tbl[4]; #CAMPO DATA DE NASCIMENTO DA TABELA DO BANCO    
+    $telefone = $tbl[5]; #CAMPO TELEFONE DA TABELA DO BANCO    
+    $logradouro = $tbl[6]; #CAMPO LOGRADOURO DA TABELA DO BANCO
+    $numero = $tbl[7]; #CAMPO NUMERO DA TABELA DO BANCO
+    $cidade = $tbl[8]; #CAMPO CIDADE DA TABELA DO BANCO
+    $ativo = $tbl[9]; #CAMPO ATIVO DA TABELA DO BANCO
 }
 
 #USUARIO CLICA NO BOTÃO SALVAR
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     mysqli_query($link, $sql);
 
     echo"<script>window.alert('CLIENTE ALTERADO COM SUCESSO!');</script>";
-    echo"<script>window.location.href='admhome.php';</script>";
+    echo"<script>window.location.href='listacliente.php';</script>";
 }
 
 
@@ -77,10 +77,22 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
             <br>
             <input type="password" name="senha" id="senha" value="<?=$senha?>" required>
             <br>
+            <input type="date" name="datanasc" id="datanasc" value="<?=$datanasc?>" required>
+            <br>
+            <input type="number" name="cpf" id="cpf" value="<?=$CPF?>" required>
+            <br>
+            <input type="number" name="telefone" id="telefone" value="<?=$telefone?>" required>
+            <br>
+            <input type="text" name="cidade" id="cidade" value="<?=$cidade?>" required>
+            <br>
+            <input type="text" name="logradouro" id="logradouro" value="<?=$logradouro?>" required>
+            <br>
+            <input type="number" name="numero" id="numero" value="<?=$numero?>" required>
+            <br>
             <input type="radio" name="ativo" value="s" <?=$ativo =="s"?"checked":""?>>ATIVO
             <br>
             <input type="radio" name="ativo" value="n" <?=$ativo =="n"?"checked":""?>>INATIVO
-
+            <br>
             <input type="submit" name="salvar" id="salvar" value="SALVAR">
         </form>
     </div>
