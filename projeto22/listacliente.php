@@ -4,8 +4,8 @@ include("conectadb.php");
 session_start();
 $nomeusuario = $_SESSION["nomeusuario"];
 
-#JÁ LISTA OS USUARIOS DO MEU BANCO
-$sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";
+#JÁ LISTA OS CLIENTES DO MEU BANCO
+$sql = "SELECT * FROM clientes WHERE cli_ativo = 's'";
 $retorno = mysqli_query($link, $sql);
 
 #JÁ FORÇA TRAZER s NA VARIÁVEL ATIVO
@@ -17,10 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     #VERIFICA SE USUARIO ESTÁ ATIVO PARA LISTAR
     if ($ativo == 's') {
-        $sql = "SELECT * FROM usuarios WHERE usu_ativo = 's' ";
+        $sql = "SELECT * FROM clientes WHERE cli_ativo = 's' ";
         $retorno = mysqli_query($link, $sql);
     } else {
-        $sql = "SELECT * FROM usuarios WHERE usu_ativo = 'n' ";
+        $sql = "SELECT * FROM clientes WHERE cli_ativo = 'n' ";
         $retorno = mysqli_query($link, $sql);
     }
 }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estiloadm.css">
-    <title>LISTA USUARIOS</title>
+    <title>LISTA CLIENTES</title>
 </head>
 
 <body>
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- AQUI LISTA OS USUARIOS DO BANCO  -->
     <div id="background">
-        <form action="listausuario.php" method="post">
+        <form action="listacliente.php" method="post">
             <input type="radio" name="ativo" class="radio" value="s" required 
             onclick="submit()" <?=$ativo =='s'?"checked":""?>>ATIVOS
 
@@ -78,7 +78,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <table border="1">
                 <tr>
                     <th>NOME</th>
-                    <th>ALTERAR DADOS</th>
+                    <th>CPF</th>
+                    <th>TELEFONE</th>
+                    <th>CIDADE</th>
+                    <th>EDIÇÕES</th>
                     <th>ATIVO?</th>
                 </tr>
                 <!-- BRUXARIA EM PHP -->
@@ -86,10 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     while($tbl = mysqli_fetch_array($retorno)){
                 ?>
                     <tr>
-                        <td><?= $tbl[1]?></td> <!-- TRAZ SOMENTE A COLUNA 1 DO BANCO [NOME]-->
-                        <td><a href="alterausuario.php?id=<?= $tbl[0]?>">
+                        <td><?= $tbl[2]?></td> <!-- TRAZ SOMENTE A COLUNA 1 DO BANCO [NOME]-->
+                        <td><?= $tbl[1]?></td>
+                        <td><?= $tbl[5]?></td>
+                        <td><?= $tbl[8]?></td>
+                        <td><a href="alteracliente.php?id=<?= $tbl[0]?>">
                         <input type="button" value="ALTERAR DADOS"></a></td> <!-- CRIANDO UM BOTÃO ALTERAR PASSANDO O ID DO USUARIO NA URL VIA GET -->
-                        <td><?=$check =($tbl[3] == 's')?"SIM":"NÃO"?></td> <!-- VALIDA S OU N E ESCREVE "SIM" E "NÃO"-->
+                        <td><?=$check =($tbl[9] == 's')?"SIM":"NÃO"?></td> <!-- VALIDA S OU N E ESCREVE "SIM" E "NÃO"-->
                     </tr>
                     <?php
                     }

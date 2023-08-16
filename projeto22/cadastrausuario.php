@@ -41,6 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <div>
         <ul class="menu">
             <li><a href="cadastrausuario.php">CADASTRA USUARIO</a></li>
+            <li><a href="cadastracliente.php">CADASTRA CLIENTE</a></li>
             <li><a href="listausuario.php">LISTA USUARIO</a></li>
             <li><a href="cadastraproduto.php">CADASTRA PRODUTO</a></li>
             <li><a href="listaproduto.php">LISTA PRODUTO</a></li>
@@ -54,8 +55,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <input type="text" name="nome" id="nome" placeholder="NOME USUARIO">
             <br>
             <input type="password" name="senha" id="senha"placeholder="SENHA">
-            <br>
-            <input type="text" name="nome" id="nome" placeholder="NOME USUARIO">
             <br>
             <input type="submit" name="cadastrar" id="cadastrar" value="CADASTRAR">
             
