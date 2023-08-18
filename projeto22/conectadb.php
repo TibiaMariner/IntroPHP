@@ -3,7 +3,7 @@
     ## ALERTA EM MODO PROFISSIONAL ARQUIVO DEVE-SE MANTER OCULTO E PROTEGIDO ##
 
     ## LOCALIZA O PC OU SERVIDOR COM O BANCO (NOME DO COMPUTADOR)
-    $servidor = "localhost:3307";
+    $servidor = "localhost";
     ## NOME DO BANCO
     $banco = "projeto22";
     ##USUARIO DE ACESSO
